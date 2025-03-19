@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
     id("org.jetbrains.kotlin.kapt") version "2.1.0"
+    kotlin("plugin.serialization") version "2.1.0"
     id("dk.holonet.plugin") version "0.0.1"
 }
 
@@ -13,15 +14,12 @@ repositories {
 }
 
 dependencies {
-//    compileOnly(libs.pf4j)
-//    kapt(libs.pf4j)
-
-//    compileOnly(libs.holonet.core)
     compileOnly(compose.runtime)
     compileOnly(compose.foundation)
     compileOnly(compose.material)
     compileOnly(compose.ui)
     compileOnly(compose.components.resources)
+    compileOnly(libs.serialization)
 }
 
 java {

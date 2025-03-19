@@ -13,18 +13,19 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.sp
 import dk.holonet.core.HoloNetModule
-import dk.holonet.core.ModuleConfig
-import dk.holonet.core.Position
+import dk.holonet.core.HoloNetPlugin
+import dk.holonet.core.ModuleConfiguration
+import dk.holonet.core.asString
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import org.pf4j.Extension
-import org.pf4j.Plugin
 import org.pf4j.PluginWrapper
 import java.text.SimpleDateFormat
 import java.util.Date
 
-class ClockPlugin(wrapper: PluginWrapper) : Plugin(wrapper) {
+class ClockPlugin(wrapper: PluginWrapper) : HoloNetPlugin(wrapper) {
     override fun start() {
+        super.start()
         println("ClockPlugin.start()")
     }
 
@@ -33,9 +34,7 @@ class ClockPlugin(wrapper: PluginWrapper) : Plugin(wrapper) {
     }
 
     @Extension
-    class ClockModule() : HoloNetModule {
-        override val config: ModuleConfig = ModuleConfig(Position.CENTER)
-
+    class ClockModule() : HoloNetModule() {
         @Composable
         override fun render() {
             var time by remember { mutableStateOf("") }
@@ -51,6 +50,15 @@ class ClockPlugin(wrapper: PluginWrapper) : Plugin(wrapper) {
             Box(modifier = Modifier.wrapContentSize(),
                 contentAlignment = Alignment.Center) {
                 Text(time, fontSize = 40.sp)
+            }
+        }
+
+        override fun configure(configuration: ModuleConfiguration?) {
+            super.configure(configuration)
+
+            configuration?.properties?.let { props ->
+                props["key1"]?.let { println("Reading key1: ${it.asString()}") }
+                props["key2"]?.let { println("Reading key2: ${it.asString()}") }
             }
         }
 
