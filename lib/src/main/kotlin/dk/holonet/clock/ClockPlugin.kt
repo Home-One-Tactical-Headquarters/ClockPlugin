@@ -26,11 +26,11 @@ import java.util.Date
 class ClockPlugin(wrapper: PluginWrapper) : HoloNetPlugin(wrapper) {
     override fun start() {
         super.start()
-        println("ClockPlugin.start()")
+//        println("ClockPlugin.start()")
     }
 
     override fun stop() {
-        println("ClockPlugin.stop()")
+//        println("ClockPlugin.stop()")
     }
 
     @Extension
@@ -57,8 +57,8 @@ class ClockPlugin(wrapper: PluginWrapper) : HoloNetPlugin(wrapper) {
             super.configure(configuration)
 
             configuration?.config?.let { props ->
-                props["key1"]?.let { println("Reading key1: ${it.asString()}") }
-                props["key2"]?.let { println("Reading key2: ${it.asString()}") }
+//                props["key1"]?.let { println("Reading key1: ${it.asString()}") }
+//                props["key2"]?.let { println("Reading key2: ${it.asString()}") }
             }
         }
 
