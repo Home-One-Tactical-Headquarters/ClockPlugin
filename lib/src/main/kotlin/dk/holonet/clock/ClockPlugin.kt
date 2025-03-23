@@ -56,7 +56,7 @@ class ClockPlugin(wrapper: PluginWrapper) : HoloNetPlugin(wrapper) {
         override fun configure(configuration: ModuleConfiguration?) {
             super.configure(configuration)
 
-            configuration?.properties?.let { props ->
+            configuration?.config?.let { props ->
                 props["key1"]?.let { println("Reading key1: ${it.asString()}") }
                 props["key2"]?.let { println("Reading key2: ${it.asString()}") }
             }
