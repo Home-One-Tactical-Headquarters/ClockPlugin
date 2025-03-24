@@ -1,6 +1,9 @@
 package dk.holonet.clock
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -11,6 +14,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import dk.holonet.core.HoloNetModule
 import dk.holonet.core.HoloNetPlugin
@@ -47,9 +51,13 @@ class ClockPlugin(wrapper: PluginWrapper) : HoloNetPlugin(wrapper) {
                 }
             }
 
-            Box(modifier = Modifier.wrapContentSize(),
+            Box(modifier = Modifier.wrapContentHeight().fillMaxWidth(),
                 contentAlignment = Alignment.Center) {
-                Text(time, fontSize = 40.sp)
+                Text(
+                    time,
+                    fontSize = 40.sp,
+                    textAlign = TextAlign.Center
+                )
             }
         }
 
