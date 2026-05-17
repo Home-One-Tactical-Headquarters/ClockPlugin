@@ -34,6 +34,7 @@ class ClockPlugin(wrapper: PluginWrapper) : HoloNetPlugin(wrapper) {
     }
 
     override fun stop() {
+        super.stop()
 //        println("ClockPlugin.stop()")
     }
 
